@@ -35,6 +35,7 @@ string[] CreateArray()
     }
     return array;
 }
+
 string[] ThreeSymbolCheck(string[] array)
 {   
     int count = 0;
