@@ -1,13 +1,63 @@
-﻿//Создать репозиторий на GitHub
-// Нарисовать блок-схему алгоритма (можно обойтись блок-схемой основной содержательной части, 
-//если вы выделяете её в отдельный метод)
-//Снабдить репозиторий оформленным текстовым описанием решения (файл README.md)
-//Написать программу, решающую поставленную задачу
-//Использовать контроль версий в работе над этим небольшим проектом (не должно быть так, 
-//что всё залито одним коммитом, как минимум этапы 2, 3, и 4 должны быть расположены в разных коммитах)
+﻿string Prompt(string message)
+{
+    System.Console.Write(message);
+    string result = Console.ReadLine();
+    return result;
+}
 
-//Задача: Написать программу, которая из имеющегося массива строк формирует новый массив из строк, 
-//длина которых меньше, либо равна 3 символам. Первоначальный массив можно ввести с клавиатуры, 
-//либо задать на старте выполнения алгоритма. При решении не рекомендуется пользоваться коллекциями, 
-//лучше обойтись исключительно массивами.
+void ShowArray(string[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        System.Console.Write($"{array[i]}  ");
+    }
+    System.Console.WriteLine();
+}
+
+string[] CreateArray()
+{   
+    int count = 0;
+    string value = "";
+    string[] tempArray = new string[1000];
+    System.Console.WriteLine($"Для завершения ввода введите 'exit'");
+    for (count = 0; value != "exit"; count++)
+    {
+        value = Prompt($"Введите значение элемента {count+1}> ");
+        if (value != "exit") 
+        {
+            tempArray[count] = value;
+        }
+    }
+    string[] array = new string[count-1];
+    for (int i = 0; i < array.Length; i++)
+    {
+         array[i] = tempArray[i];
+    }
+    return array;
+}
+string[] ThreeSymbolCheck(string[] array)
+{   
+    int count = 0;
+    int index = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i].Length <= 3) count++;
+    }
+    string[] newArray = new string[count];
+    for (int j = 0; j < array.Length; j++)
+    {
+        if (array[j].Length <= 3) 
+        {
+            newArray[index] = array[j];
+            index++;
+        }
+    }
+    return newArray;
+}
+
+string[] array = CreateArray();
+System.Console.Write("Вы ввели => ");
+ShowArray(array);
+System.Console.Write("Новый массив => ");
+ShowArray(ThreeSymbolCheck(array));
 
