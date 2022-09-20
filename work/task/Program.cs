@@ -28,6 +28,7 @@ string[] CreateArray()
             tempArray[count] = value;
         }
     }
+    
     string[] array = new string[count-1];
     for (int i = 0; i < array.Length; i++)
     {
